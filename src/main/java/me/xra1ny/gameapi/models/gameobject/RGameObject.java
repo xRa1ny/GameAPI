@@ -1,5 +1,6 @@
 package me.xra1ny.gameapi.models.gameobject;
 
+import me.xra1ny.gameapi.models.screen.RGameScreen;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -20,6 +21,18 @@ public interface RGameObject extends Serializable {
 
     double getHeight();
     void setHeight(double height);
+
+    /**
+     * called when this game object is registered on the specified game screen
+     * @param gameScreen the game screen
+     */
+    void onRegister(@NotNull RGameScreen gameScreen);
+
+    /**
+     * called when this game screen is unregistered on the specified game screen
+     * @param gameScreen the game screen
+     */
+    void onUnregister(@NotNull RGameScreen gameScreen);
 
     default double getAngle(double x, double y) {
         return Math.atan2(y-getY(), x-getX());

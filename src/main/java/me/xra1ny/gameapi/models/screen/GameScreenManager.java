@@ -33,6 +33,7 @@ public class GameScreenManager {
         }
 
         this.objects.add(object);
+        object.onRegister(screen);
     }
 
     public void unregister(@NotNull RGameObject object) throws GameObjectNotRegisteredException {
@@ -41,6 +42,7 @@ public class GameScreenManager {
         }
 
         this.objects.remove(object);
+        object.onUnregister(screen);
     }
 
     @Nullable
